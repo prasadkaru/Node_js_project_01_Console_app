@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // Sample data
-const guests = [
+/*const guests = [
     {
         name: "name1",
         address: "add1"
@@ -21,5 +21,9 @@ const filePath = 'guests.json';
 
 // Write data to the file
 fs.writeFileSync(filePath, guestsJSON);
+*/
 
-console.log('Data has been written to', filePath);
+
+// const dataBaffer = fs.readFileSync('guests.json');
+// const data=JSON.parse(dataBaffer.toString())
+// console.log(data[0])
