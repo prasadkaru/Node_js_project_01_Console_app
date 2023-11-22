@@ -10,11 +10,11 @@ const chalk = require('chalk')
 
 //addguest updateguest deleteguest readguest listguest
 
-const addGuest =(name)=>{
+const addGuest =(name,address,contact_no,visit_date)=>{
     console.log(chalk.green("Add",name));
 }
 
-const updateGuest =(id)=>{
+const updateGuest =(id,address,contact_no,visit_date)=>{
     console.log(chalk.yellow.bold("Update",id));
 }
 const deleteGuest =(id)=>{
