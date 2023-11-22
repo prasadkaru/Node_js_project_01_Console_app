@@ -30,18 +30,58 @@ const addGuest =(name,address,contact_no,visit_date)=>{
     console.log(chalk.green("data saved!"));
 }
 
-const updateGuest =(id,address,contact_no,visit_date)=>{
-    console.log(chalk.yellow.bold("Update",id));
+const updateGuest =(id,name,address,contact_no,visit_date)=>{
+    const guests = loadGuests();
+    const guestIndex = guests.findIndex((guest)=>{
+        return guest.id ==id;
+    });
+    if(guestIndex!=-1){
+        const guest = guests[guestIndex];
+        guest.name = name ? name:guest.name;
+        guest.address = address ? address:guest.address;
+        guest.contact_no = contact_no ? contact_no:guest.contact_no;
+        guest.visit_date = visit_date ? visit_date:guest.visit_date;
+        console.log("Record Update",id);
+        saveGuest(guests)
+    }else{
+        console.log(chalk.yellow.inverse("No Record Found!!"))
+    }
+    //console.log(guestIndex)
+    //console.log(chalk.yellow.bold("Update",id));
 }
 const deleteGuest =(id)=>{
-    console.log(chalk.red.bold("Delete",id));
+    const guests = loadGuests();
+    const newGuests = guests.filter((guest)=>{
+        return guest.id!=id;
+    });
+    if(guests.length>newGuests.length){
+        saveGuest(newGuests);
+        console.log(chalk.red.bold("Delete",id));
+    }else{
+        console.log(chalk.red.inverse("No Record Found!!"))
+    }
+
 }
 const readGuest =(id)=>{
-    console.log(chalk.green("Read",id));
+    const guests = loadGuests();
+    const guest = guests.find((guest)=>{
+        return guest.id ===id;
+    });
+    if(guest){
+        console.log(chalk.red.bold("guest",id));
+        console.log(guest);
+    }else{
+        console.log(chalk.red.bold.inverse('No record Found'));
+    }
+
 }
 
-const listGuest =(id)=>{
-    console.log(chalk.blue.bold("list"),id);
+const listGuest =()=>{
+    console.log(chalk.magenta.bold("Guest List"));
+    const guests=loadGuests();
+    guests.forEach((guests)=>{
+        console.log(guests);
+    })
 }
 
 const saveGuest=(guests)=>{

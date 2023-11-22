@@ -128,7 +128,6 @@ yargs.command({
     builder:{
         id:{
             describe:"ID",
-            demandOption:true,
             type:"number"
         }
     },
