@@ -35,7 +35,10 @@ yargs.command({
     },
     handler:function (argv){
         db.addGuest(
-        argv.name
+            argv.name,
+            argv.address,
+            argv.contact_no,
+            argv.visit_date
         );
 
 
@@ -73,10 +76,70 @@ yargs.command({
     },
     handler:function (argv){
         db.updateGuest(
+            argv.id,
+            argv.name,
+            argv.address,
+            argv.contact_no,
+            argv.visit_date
+        );
+    }
+});
+//delete
+yargs.command({
+    command:'delete',
+    describe:'delete a guest',
+    builder:{
+        id:{
+            describe:"ID",
+            demandOption:true,
+            type:"number"
+        }
+    },
+    handler:function (argv){
+        db.deleteGuest(
             argv.id
         );
     }
-})
+
+});
+
+//read
+yargs.command({
+    command:'read',
+    describe:'read a guest',
+    builder:{
+        id:{
+            describe:"ID",
+            demandOption:true,
+            type:"number"
+        }
+    },
+    handler:function (argv){
+        db.readGuest(
+            argv.id
+        );
+    }
+
+});
+//list
+yargs.command({
+    command:'list',
+    describe:'read all guest',
+    builder:{
+        id:{
+            describe:"ID",
+            demandOption:true,
+            type:"number"
+        }
+    },
+    handler:function (argv){
+        db.listGuest(
+            argv.id
+        );
+    }
+
+});
+
  yargs.parse();
 //console.log(yargs.argv)
 // const command = process.argv;

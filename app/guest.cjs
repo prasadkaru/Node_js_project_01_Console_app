@@ -17,15 +17,15 @@ const addGuest =(name)=>{
 const updateGuest =(id)=>{
     console.log(chalk.yellow.bold("Update",id));
 }
-const deleteGuest =()=>{
-    console.log(chalk.red.bold("Delete"));
+const deleteGuest =(id)=>{
+    console.log(chalk.red.bold("Delete",id));
 }
-const readGuest =()=>{
-    console.log(chalk.green("Read"));
+const readGuest =(id)=>{
+    console.log(chalk.green("Read",id));
 }
 
-const listGuest =()=>{
-    console.log(chalk.blue.bold("list"));
+const listGuest =(id)=>{
+    console.log(chalk.blue.bold("list"),id);
 }
 
 
